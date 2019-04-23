@@ -15,14 +15,13 @@ class Batch extends Component {
     fetchBatchDetailsAndStudents(batchId) {
         axios.get(`/batch/${batchId}`)
             .then(res => {
-                console.log(res.data)
                 this.setState({ batchData: res.data.batchData[0], students: res.data.students })
             })
             .catch(err => console.log(err))
     }
 
     takeAttendance() {
-        this.props.navigation.navigate("Attendance", { students:this.state.students })
+        this.props.navigation.navigate("Attendance", { students: this.state.students })
     }
 
     render() {
@@ -30,16 +29,17 @@ class Batch extends Component {
             return (
                 <View style={{ flex: 1, justifyContent: 'center' }}>
 
-                    <View style={{ flex: 1, justifyContent:'center' }}>
+                    <View style={{ flex: 1, justifyContent: 'center' }}>
                         <Text style={{ textAlign: 'center' }}>Batch Details</Text>
                         <Text style={{ textAlign: 'center' }}>Batch Name: {this.state.batchData.name}</Text>
                         <Text style={{ textAlign: 'center' }}>{this.state.batchData.course[0].name}, {this.state.batchData.department[0].name}</Text>
                     </View>
                     <View style={{ flex: 5 }}>
 
-                        <Button onPress={ () => this.takeAttendance() }>Take Attendance</Button>
+                        <Button onPress={() => this.takeAttendance()}>Take Attendance</Button>
 
                         <ScrollView>
+                            {this.state.students.length > 0 && <Text style={{ textAlign: 'center', fontSize: 20, marginTop: 10 }}>Students</Text>}
                             {
                                 this.state.students.length > 0 ?
                                     this.state.students.map(student => {
@@ -51,7 +51,7 @@ class Batch extends Component {
                                         )
                                     })
                                     :
-                                    <Text style={{ textAlign: 'center' }}>Student Details</Text>
+                                    <Text style={{ textAlign: 'center' }}>No Student's Yet</Text>
                             }
 
                         </ScrollView>

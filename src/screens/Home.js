@@ -64,7 +64,7 @@ class Home extends Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ textAlign: 'center' }}>Welcome {"Hisham Mubarak" /* this.props.auth.name */}</Text>
+                    <Text style={{ textAlign: 'center' }}>Welcome {this.props.auth.name}</Text>
                 </View>
 
                 <View style={{ flex: 5 }}>
