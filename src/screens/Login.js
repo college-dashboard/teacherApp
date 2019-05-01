@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 class Login extends Component {
 
-    state = { email: 'nethra@gmail.com', password: 'Nethra123' }
+    state = { email: '', password: '' }
 
     static navigationOptions = {
         header: null

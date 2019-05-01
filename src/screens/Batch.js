@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { ScrollView, View, Text } from 'react-native'
 import { Button, PlainCard } from '../components/common'
 import axios from 'axios'
-import Swiper from 'react-native-swiper';
 
 class Batch extends Component {
 
     state = { batchData: null, students: null }
+
     componentDidMount() {
-        this.fetchBatchDetailsAndStudents("5ca8639035399f1e4cd9e881")
-        // this.fetchBatchDetailsAndStudents(this.props.navigation.state.params.batchId)
+        this.fetchBatchDetailsAndStudents(this.props.navigation.state.params.batchId)
     }
 
     fetchBatchDetailsAndStudents(batchId) {

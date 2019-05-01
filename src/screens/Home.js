@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { PlainCard } from '../components/common'
@@ -28,19 +28,12 @@ class Home extends Component {
         this.props.navigation.navigate('Batch', { batchId })
     }
 
-    // fetchBatchDetailsAndStudents(batchId) {
-    //     axios.get(`/batch/${batchId}`)
-    //     .then(res =>  {
-    //         this.setState({ batchData:res.data.batchData[0], students:res.data.students })
-    //     })
-    //     .catch(err => console.log(err))
-    // }
-
     renderCourses() {
         if (this.state.departments && this.state.departments.length > 0) {
             return this.state.departments.map((dept, index) => {
                 return (
                     <View key={index}>
+                        <ScrollView>
                         {
                             dept.courses.batches.length > 0 ?
                                 dept.courses.batches.map(batch => {
@@ -52,6 +45,7 @@ class Home extends Component {
                                     )
                                 }) : null
                         }
+                        </ScrollView>
                     </View>
                 )
             })
