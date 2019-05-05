@@ -17,7 +17,7 @@ class Home extends Component {
     }
 
     fetchCourses() {
-        axios.get(`/department/${"5ca04efdc753b32d1bf90d18"}`)
+        axios.get(`/department/${this.props.auth.department}`)
             .then(res => {
                 this.setState({ departments: res.data })
             })

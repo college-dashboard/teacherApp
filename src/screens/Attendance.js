@@ -87,7 +87,7 @@ class Attendance extends Component {
                             />
                         </View>
                         :
-                        !this.state.selectedSlot ?
+                        this.state.selectedSlot === null ?
                             <View style={{ padding: 20 }}>
                                 <Text style={{ textAlign: 'center' }}>Select Hour</Text>
                                 {
@@ -101,7 +101,7 @@ class Attendance extends Component {
                                 }
                             </View>
                             :
-                            this.state.selectedDate && this.state.selectedSlot ?
+                            this.state.selectedDate && this.state.selectedSlot !== null ?
                                 <React.Fragment>
                                     <Swiper
                                         loop={false}
